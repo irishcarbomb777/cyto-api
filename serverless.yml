@@ -46,7 +46,6 @@ functions:
       - http:
           path: scandata
           method: post
-          cors: true
           authorizer: aws_iam
   
   getUserScan:
@@ -55,7 +54,6 @@ functions:
       - http:
           path: scandata/{userId}/{scanId}
           method: get
-          cors: true
           authorizer: aws_iam
     
   listUserScans:
@@ -64,7 +62,6 @@ functions:
       - http:
           path: scandata
           method: get
-          cors: true
           authorizer: aws_iam
   
   updateScan:
@@ -73,7 +70,6 @@ functions:
       - http:
           path: scandata/{userId}/{scanId}
           method: put
-          cors: true
           authorizer: aws_iam
   
   deleteScan:
@@ -82,7 +78,6 @@ functions:
       - http:
           path: scandata/{userId}/{scanId}
           method: delete
-          cors: true
           authorizer: aws_iam
 
         
