@@ -1,12 +1,15 @@
 {
     "pathParameters": {
-        "userId" : "madSci777",
-        "scanId" : "a0ac5b50-42eb-11eb-b3e2-bde8b46d4582"
+        "scanId" : "dbbd0d70-444e-11eb-9883-b51940ff704e"
     },
-
     "body" : {
         "analysisType" : "Area Detection - Time Series",
         "dataOutput"   : [{"area": 300, "time": 0.01},
                           {"area": 294, "time": 0.02}]
+    },
+    "requestContext" :{
+        "identity" : {
+            "cognitoIdentityId" : "USER-SUB-1234"
+        }
     }
 }

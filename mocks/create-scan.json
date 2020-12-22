@@ -1,7 +1,11 @@
 {
     "body" : {
-        "userId"       : "madSci777",
         "analysisType" : "Area Detection",
         "dataOutput"   : [{"area" : 300, "time": 0.01}]
+    },
+    "requestContext": {
+        "identity": {
+            "cognitoIdentityId" : "USER-SUB-1234"
+        }
     }
 }
