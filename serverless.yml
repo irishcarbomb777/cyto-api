@@ -1,5 +1,6 @@
+#-------- Serverless API for NodeJS Functions -------------
 # NOTE: update this with your service name
-service: cyto-api
+service: blueprint-mockupgen-api
 
 # Create an optimized package for our functions
 package:
@@ -10,6 +11,7 @@ plugins:
   - serverless-offline
   - serverless-dotenv-plugin # Load .env as environment variables
 
+
 provider:
   name: aws
   runtime: nodejs12.x
@@ -19,7 +21,7 @@ provider:
   # These environment variables are made available to our functions
   # under process.env.
   environment:
-    tableName: scandata
+    tableName: mockupgenerator
 
   # 'iamRoleStatements' defines the permission policy for the Lambda function.
   # In this case Lambda functions are granted with permissions to access DynamoDB.
@@ -40,51 +42,51 @@ functions:
   # - path: url path is /scandata
   # - method: POST request
   
-  createScan:
-    handler: createScan.main
+  createMockup:
+    handler: createMockup.main
     events:
       - http:
-          path: scandata
+          path: mockupgenerator
           method: post
           cors: true
           authorizer: aws_iam
   
-  getUserScan:
-    handler: getUserScan.main
+  getMockup:
+    handler: getMockup.main
     events:
       - http:
-          path: scandata/{userId}/{scanId}
+          path: mockupgenerator/{itemId}/{imprintId}
           method: get
-          cors: true
-          authorizer: aws_iam
+          # cors: true
+          # authorizer: aws_iam
     
-  listUserScans:
-    handler: listUserScans.main
+  listMockups:
+    handler: listMockups.main
     events:
       - http:
-          path: scandata
+          path: mockupgenerator
           method: get
           cors: true
           authorizer: aws_iam
   
-  updateScan:
-    handler: updateScan.main
+  updateMockup:
+    handler: updateMockup.main
     events:
       - http:
-          path: scandata/{userId}/{scanId}
+          path: mockupgenerator/{itemId}/{imprintId}
           method: put
           cors: true
           authorizer: aws_iam
   
-  deleteScan:
-    handler: deleteScan.main
+  deleteMockup:
+    handler: deleteMockup.main
     events:
       - http:
-          path: scandata/{userId}/{scanId}
+          path: mockupgenerator/{itemId}/{imprintId}
           method: delete
           cors: true
           authorizer: aws_iam
-
+  
         
 resources:
   # API Gateway Errors

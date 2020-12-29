@@ -6,8 +6,8 @@ export const main = handler(async (event, context) => {
     TableName: process.env.tableName,
     // 'Key' defines the partition key and sort key of the item to be retrieved
     Key: {
-      userId :  event.requestContext.identity.cognitoIdentityId, // The id of the user
-      scanId :  event.pathParameters.scanId, // The id of the scan
+      itemId    :  event.pathParameters.itemId, // The id of the user
+      imprintId :  event.pathParameters.imprintId, // The id of the scan
     },
   };
 

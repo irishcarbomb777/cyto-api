@@ -1,4 +1,3 @@
-import * as uuid from "uuid";
 import handler from "./libs/handler-lib";
 import dynamoDb from "./libs/dynamodb-lib";
 
@@ -6,15 +5,18 @@ import dynamoDb from "./libs/dynamodb-lib";
 export const main = handler(async (event, context) => {
     // NOTE: The JSON.parse line is required
     // You'll have to play around a little more to fully understand why
-    const data = JSON.parse(event.body);
+    const data = JSON.parse(event.body);    // Use this for live aws calls
+    // const data = event.body;             //Use this line for mock jsons from serverless
     const params = {
         TableName: process.env.tableName,
         Item: {
         // The attributes of the item to be created
-        userId       : event.requestContext.identity.cognitoIdentityId,       // User Id
-        scanId       : uuid.v1(),               // Unique scan Id
-        analysisType : data.analysisType, // Analysis Type
-        dataOutput   : data.dataOutput,    // Data output for specific analysis
+        itemId       : data.itemId,       // User Id
+        imprintId    : data.imprintId,               // Unique scan Id
+        align        : data.align,
+        position     : data.position, // Analysis Type
+        maxWidth     : data.maxWidth,    // Data output for specific analysis
+        maxHeight    : data.maxHeight,
     },
   };
 

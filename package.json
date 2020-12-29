@@ -20,6 +20,7 @@
   },
   "dependencies": {
     "aws-amplify": "^3.3.13",
+    "serverless-python-requirements": "^5.1.0",
     "uuid": "^7.0.3"
   }
 }
